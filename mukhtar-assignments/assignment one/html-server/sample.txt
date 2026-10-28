@@ -1,0 +1,6 @@
+Hello! Welcome to my Node.js Server.
+
+This is a sample text file.
+
+You have successfully accessed this file
+through a Node.js HTTP server.
