@@ -1,25 +1,22 @@
 const express = require('express');
-const path = require('path');
 
 const app = express();
 const PORT = 3000;
 
-// Route 1: Home page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.json({ message: 'Welcome to our Express server!' });
 });
 
-// Route 2: About page
 app.get('/about', (req, res) => {
-    res.send('<h1>About Us</h1><p>Welcome to our Node.js class project.</p>');
+    res.json({ message: 'About Us' });
 });
 
 app.get('/contact', (req, res) => {
-    res.send('<h1>Contact Us</h1><p>Email: student@example.com</p>');
+    res.json({ message: 'Contact Us', email: 'student@example.com' });
 });
 
 app.get('/services', (req, res) => {
-    res.send('<h1>Our Services</h1><p>We provide web development services.</p>');
+    res.json({ message: 'Our Services', description: 'We provide web development services.' });
 });
 
 
@@ -31,17 +28,10 @@ app.get('/students', (req, res) => {
     ]);
 });
 
-// Route 6: Server information
-app.get('/info', (req, res) => {
-    res.json({
-        message: 'Express server is running successfully',
-        port: PORT
-    });
-});
 
 
 app.use((req, res) => {
-    res.status(404).send('<h1>404 - Page Not Found</h1>');
+    res.status(404).json({ message: 'Page Not Found' });
 });
 
 // Start the server
