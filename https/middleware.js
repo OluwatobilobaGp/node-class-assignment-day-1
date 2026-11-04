@@ -8,7 +8,7 @@ const checkApiKey = (req, res, next) => {
   if (apiKey !== "12345") {
     return res.status(401).send("Unauthorized: invalid API key");
   }
-
+  
   next();
 };
 
