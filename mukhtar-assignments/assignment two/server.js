@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-// const PORT = process.env.PORT || 3100;
 const PORT = 3100;
 
 app.get('/', (req, res) => {
@@ -37,9 +36,8 @@ app.get('/faq', (req, res) => {
   ]);
 });
 
-// Handle unknown URLs after all the routes.
 app.use((req, res) => {
-  res.status(404).json('Route not found');
+  res.status(404).json('404: Not found');
 });
 
 app.listen(PORT, () => {

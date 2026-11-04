@@ -49,6 +49,18 @@ const server = http.createServer((req, res) => {
 
     res.end(data);
   });
+
+  // const checkApiKey = (req, res, next) => {
+  //   if (req.query.api_key === '12345') {
+  //   next();
+  //   } else {
+  //   res.status(401).send('Unauthorized');
+  //   }
+  // };
+
+  // app.get('/api/data', checkApiKey, (req, res) => {
+  //   res.send('Secret Data Accessed');
+  // }); 
 });
 
 server.listen(PORT, () => {
