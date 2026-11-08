@@ -1,20 +1,16 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import cors from "cors";
+const mongoose = require("mongoose");
+const express = require("express");
+const dotenv = require("dotenv");
+const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json()); // make we fit receive JSON
 
-// 1. CONNECT TO MONGODB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected!"))
-  .catch((err) => console.log("Error:", err));
-
-// 2. CREATE MODEL - Like table for database
+// 1. CREATE MODEL
 const studentSchema = new mongoose.Schema({
   name: String,
   age: Number,
@@ -22,6 +18,18 @@ const studentSchema = new mongoose.Schema({
 });
 
 const Student = mongoose.model("Student", studentSchema);
+
+// 2. VALIDATE STUDENT IDS
+app.param("id", (req, res, next, id) => {
+  if (!mongoose.isValidObjectId(id)) {
+    return res.status(400).json({
+      error: "Invalid student ID",
+      message: "Use the MongoDB _id returned when creating or listing students.",
+    });
+  }
+
+  return next();
+});
 
 // 3. CRUD ROUTES
 
@@ -48,6 +56,10 @@ app.get("/students", async (req, res) => {
 // GET http://localhost:5000/students/:id
 app.get("/students/:id", async (req, res) => {
   const student = await Student.findById(req.params.id);
+  if (!student) {
+    return res.status(404).json({ error: "Student not found" });
+  }
+
   res.json(student);
 });
 
@@ -55,16 +67,38 @@ app.get("/students/:id", async (req, res) => {
 // PUT http://localhost:5000/students/:id
 app.put("/students/:id", async (req, res) => {
   const updated = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  if (!updated) {
+    return res.status(404).json({ error: "Student not found" });
+  }
+
   res.json(updated);
 });
 
 // DELETE - Delete student
 // DELETE http://localhost:5000/students/:id
 app.delete("/students/:id", async (req, res) => {
-  await Student.findByIdAndDelete(req.params.id);
+  const deleted = await Student.findByIdAndDelete(req.params.id);
+  if (!deleted) {
+    return res.status(404).json({ error: "Student not found" });
+  }
+
   res.json({ message: "Student deleted" });
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server dey run for port ${process.env.PORT}`);
+const startServer = async () => {
+  if (!process.env.MONGO_URI) {
+    throw new Error("MONGO_URI is missing from the .env file");
+  }
+
+  await mongoose.connect(process.env.MONGO_URI);
+  console.log("MongoDB Connected!");
+
+  app.listen(PORT, () => {
+    console.log(`Server dey run for port ${PORT}`);
+  });
+};
+
+startServer().catch((err) => {
+  console.error("Failed to start server:", err.message);
+  process.exitCode = 1;
 });
