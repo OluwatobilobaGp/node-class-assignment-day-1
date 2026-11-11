@@ -21,7 +21,7 @@ const updateUser = async(id, data) =>{
     return await
     User.findByIdAndUpdate(id, data, {
         new: true,
-        runhValidators: true,
+        runValidators: true,
     });
 };
 
