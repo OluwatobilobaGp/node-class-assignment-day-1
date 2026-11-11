@@ -1,0 +1,85 @@
+[
+  {
+    "fullName": "John Michael",
+    "profilePhoto": null,
+    "currentResidency": "Lagos, Nigeria",
+    "politicalParty": "APC",
+    "religion": "Christianity",
+    "dateOfBirth": "1998-04-12",
+    "gender": "Male",
+    "visionAndMission": "To become a successful technology entrepreneur and create innovative solutions that improve people's lives.",
+    "education": [
+      {
+        "degree": "BSc Computer Science",
+        "collegeOrUniversity": "University of Lagos",
+        "graduationYear": 2022
+      },
+      {
+        "degree": "MSc Information Technology",
+        "collegeOrUniversity": "University of Ibadan",
+        "graduationYear": 2025
+      }
+    ]
+  },
+  {
+    "fullName": "Grace Elizabeth",
+    "profilePhoto": null,
+    "currentResidency": "Abuja, Nigeria",
+    "politicalParty": "PDP",
+    "religion": "Christianity",
+    "dateOfBirth": "2000-08-25",
+    "gender": "Female",
+    "visionAndMission": "To empower young women through education, leadership, entrepreneurship and community development.",
+    "education": [
+      {
+        "degree": "BSc Business Administration",
+        "collegeOrUniversity": "Babcock University",
+        "graduationYear": 2023
+      }
+    ]
+  },
+  {
+    "fullName": "Ibrahim Musa",
+    "profilePhoto": null,
+    "currentResidency": "Kano, Nigeria",
+    "politicalParty": "NNPP",
+    "religion": "Islam",
+    "dateOfBirth": "1996-11-03",
+    "gender": "Male",
+    "visionAndMission": "To contribute to national development through agricultural innovation, sustainable business practices and job creation.",
+    "education": [
+      {
+        "degree": "BSc Agricultural Economics",
+        "collegeOrUniversity": "Ahmadu Bello University",
+        "graduationYear": 2020
+      },
+      {
+        "degree": "MBA",
+        "collegeOrUniversity": "University of Abuja",
+        "graduationYear": 2024
+      }
+    ]
+  },
+  {
+    "fullName": "Deborah Williams",
+    "profilePhoto": null,
+    "currentResidency": "Port Harcourt, Nigeria",
+    "politicalParty": "Labour Party",
+    "religion": "Christianity",
+    "dateOfBirth": "1999-02-17",
+    "gender": "Female",
+    "visionAndMission": "To promote quality healthcare, support vulnerable communities and make healthcare services more accessible to everyone.",
+    "education": [
+      {
+        "degree": "BSc Nursing Science",
+        "collegeOrUniversity": "University of Port Harcourt",
+        "graduationYear": 2021
+      },
+      {
+        "degree": "MPH Public Health",
+        "collegeOrUniversity": "University of Lagos",
+        "graduationYear": 2025
+      }
+    ]
+  }
+]
