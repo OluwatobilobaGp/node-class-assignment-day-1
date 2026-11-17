@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 
 import authRoutes from "./modules/auth/auth.routes.js";
+import profileRoutes from "./modules/profile/profile.routes.js";
 
 import { globalLimiter } from "./middleware/rateLimiter.js";
 import errorHandler from "./middleware/errorHandler.js";
@@ -48,6 +49,7 @@ app.get("/api/health", (req, res) => {
 
 // API routes.
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/profile", profileRoutes);
 
 // 404 handler.
 app.use((req, res) => {
