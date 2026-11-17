@@ -6,7 +6,7 @@ import asyncHandler from "../utils/asyncHandler.js";
 const authenticate = asyncHandler(async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
-  if (!authHeader?.startsWith("Bearer ")) {
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
     throw new ApiError(401, "Authentication required");
   }
 
