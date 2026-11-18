@@ -29,8 +29,7 @@ router.post("/create-profile", async (req, res) => {
       phone,
       address,
       gender,
-      bio,
-      profilePicture
+      bio
     });
 
     res.status(201).json({
