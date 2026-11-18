@@ -6,7 +6,7 @@ const router = Router();
 
 router.post("/create-profile", async (req, res) => {
   try {
-    const { userId, phone, address, gender, bio, profilePicture } = req.body;
+    const { userId, phone, address, gender, bio } = req.body;
 
     const user = await User.findById(userId);
 
@@ -29,8 +29,7 @@ router.post("/create-profile", async (req, res) => {
       phone,
       address,
       gender,
-      bio,
-      profilePicture
+      bio
     });
 
     res.status(201).json({
