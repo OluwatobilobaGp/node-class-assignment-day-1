@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import User from "../src/modules/users/user.model.js";
-import ApiError from "../src/utils/ApiError.js";
-import asyncHandler from "../src/utils/asyncHandler.js";
+import User from "../modules/users/user.model.js";
+import ApiError from "../utils/ApiError.js";
+import asyncHandler from "../utils/asyncHandler.js";
 
 const authenticate = asyncHandler(async (req, res, next) => {
   const authHeader = req.headers.authorization;

@@ -7,14 +7,14 @@ import {
   signinSchema
 } from "./auth.validation.js";
 
-import validate from "../../../middleware/validate.js";
-import authenticate from "../../../middleware/authenticate.js";
+import validate from "../../middleware/validate.js";
+import authenticate from "../../middleware/authenticate.js";
 
 import {
   signupLimiter,
   signinLimiter,
   refreshLimiter
-} from "../../../middleware/rateLimiter.js";
+} from "../../middleware/rateLimiter.js";
 
 const router = Router();
 
