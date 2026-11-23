@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { lazy, Suspense } from 'react';
 import './App.css';
@@ -7,7 +7,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Router } from 'express';
 
-const Login = lazy(() => import('./pages/Login'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
 const Signup = lazy(() => import('./pages/Signup'));
 const ViewUser = lazy(() => import('./pages/ViewUser'));
 const ViewAllUser = lazy(() => import('./pages/ViewAllUser'));

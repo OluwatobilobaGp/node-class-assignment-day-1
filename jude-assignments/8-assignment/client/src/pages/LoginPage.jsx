@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Login() {
+export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -39,6 +39,7 @@ export default function Login() {
                   onSubmit={handleSubmit}
                   className={validated ? "was-validated" : ""}
                   noValidate
+                  method="POST"
                 >
                   <div className="mb-3">
                     <label htmlFor="loginEmail" className="form-label fw-medium">
