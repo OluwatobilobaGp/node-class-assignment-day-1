@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>Members | MemberHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts.js" defer></script>
+  </head>
+  <body class="directory-page">
+    <header class="topbar">
+      <a class="brand" href="/users" aria-label="MemberHub members">
+        <span class="brand-mark">m</span>
+        <span>member<span class="brand-accent">hub</span></span>
+      </a>
+      <nav class="topbar-actions" aria-label="Account">
+        <span id="current-user" class="current-user"></span>
+        <a class="button button-outline button-small" href="/profile">My profile</a>
+        <button id="logout-button" class="button button-outline button-small" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <main class="directory-main">
+      <div class="directory-heading">
+        <div>
+          <span class="eyebrow">YOUR COMMUNITY</span>
+          <h1>Member directory</h1>
+          <p>Find and get to know the people in your community.</p>
+        </div>
+        <div class="member-count"><span class="count-icon" aria-hidden="true">✳</span><span><strong id="member-count">—</strong><small>members</small></span></div>
+      </div>
+
+      <section class="directory-card" aria-label="All members">
+        <div class="directory-tools">
+          <div>
+            <h2>All members</h2>
+            <p>People who are part of MemberHub</p>
+          </div>
+          <label class="search-box">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="member-search" type="search" placeholder="Search members" aria-label="Search members">
+          </label>
+        </div>
+        <div id="directory-alert" class="directory-alert" role="status" aria-live="polite">Loading members…</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>MEMBER</th><th>EMAIL ADDRESS</th><th>ROLE</th><th>JOINED</th></tr>
+            </thead>
+            <tbody id="member-rows"></tbody>
+          </table>
+        </div>
+        <p id="empty-results" class="empty-results" hidden>No members match your search.</p>
+      </section>
+
+      <footer class="directory-footer"><span class="status-dot status-dot-green"></span> Member information is only visible to admins.</footer>
+    </main>
+  </body>
+</html>

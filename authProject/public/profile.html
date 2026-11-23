@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>My profile | MemberHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts.js" defer></script>
+  </head>
+  <body class="directory-page">
+    <header class="topbar">
+      <a class="brand" href="/profile" aria-label="MemberHub profile">
+        <span class="brand-mark">m</span>
+        <span>member<span class="brand-accent">hub</span></span>
+      </a>
+      <nav class="topbar-actions" aria-label="Account">
+        <a id="directory-link" class="button button-outline button-small" href="/users" hidden>Member directory</a>
+        <span id="profile-current-user" class="current-user"></span>
+        <button id="profile-logout-button" class="button button-outline button-small" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <main class="directory-main profile-main">
+      <div class="directory-heading">
+        <div>
+          <span class="eyebrow">YOUR ACCOUNT</span>
+          <h1>My profile</h1>
+          <p>Your account details and profile information.</p>
+        </div>
+      </div>
+
+      <section class="profile-card" aria-label="My profile information">
+        <div id="profile-alert" class="directory-alert" role="status" aria-live="polite">Loading your profile…</div>
+
+        <div id="profile-content" class="profile-content" hidden>
+          <div class="profile-identity">
+            <span id="profile-avatar" class="profile-avatar" aria-hidden="true"></span>
+            <div>
+              <h2 id="profile-name"></h2>
+              <p id="profile-email"></p>
+            </div>
+            <span id="profile-role" class="role-pill"></span>
+          </div>
+
+          <div id="profile-details" class="profile-details" hidden>
+            <div class="profile-detail"><span>PHONE</span><strong id="profile-phone"></strong></div>
+            <div class="profile-detail"><span>ADDRESS</span><strong id="profile-address"></strong></div>
+            <div class="profile-detail"><span>GENDER</span><strong id="profile-gender"></strong></div>
+            <div class="profile-detail profile-detail-wide"><span>ABOUT</span><strong id="profile-bio"></strong></div>
+          </div>
+
+          <section id="create-profile-section" class="create-profile-section" hidden>
+            <div class="profile-section-heading">
+              <h2>Complete your profile</h2>
+              <p>You don’t have a profile yet. Add a few details to create one.</p>
+            </div>
+            <form id="create-profile-form" class="profile-form">
+              <div class="profile-form-grid">
+                <div>
+                  <label for="profile-phone-input">Phone</label>
+                  <input id="profile-phone-input" name="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="Your phone number">
+                </div>
+                <div>
+                  <label for="profile-gender-input">Gender</label>
+                  <input id="profile-gender-input" name="gender" type="text" maxlength="40" placeholder="Optional">
+                </div>
+                <div class="profile-form-wide">
+                  <label for="profile-address-input">Address</label>
+                  <input id="profile-address-input" name="address" type="text" maxlength="300" autocomplete="street-address" placeholder="City, country">
+                </div>
+                <div class="profile-form-wide">
+                  <label for="profile-bio-input">About you</label>
+                  <textarea id="profile-bio-input" name="bio" rows="4" maxlength="500" placeholder="A short introduction"></textarea>
+                </div>
+              </div>
+              <button id="create-profile-button" class="button button-primary" type="submit">Create profile</button>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

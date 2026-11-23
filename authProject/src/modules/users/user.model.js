@@ -64,6 +64,10 @@ userSchema.pre("save", async function () {
 
 // Compare supplied password with the stored hash.
 userSchema.methods.comparePassword = async function (password) {
+  if (typeof password !== "string" || typeof this.password !== "string") {
+    return false;
+  }
+
   return bcrypt.compare(password, this.password);
 };
 

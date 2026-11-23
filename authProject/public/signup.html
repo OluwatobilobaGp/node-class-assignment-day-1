@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>Create account | MemberHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts.js" defer></script>
+  </head>
+  <body class="auth-page">
+    <main class="auth-layout">
+      <section class="auth-intro">
+        <a class="brand brand-light" href="/login" aria-label="MemberHub home">
+          <span class="brand-mark">m</span>
+          <span>member<span class="brand-accent">hub</span></span>
+        </a>
+        <div class="intro-copy">
+          <span class="eyebrow eyebrow-light">Make yourself at home</span>
+          <h1>Good things<br>start together.</h1>
+          <p>Create your account and join a community that keeps everyone connected.</p>
+        </div>
+        <div class="intro-footer"><span class="status-dot"></span> Your community, closer</div>
+        <div class="intro-orb intro-orb-one"></div>
+        <div class="intro-orb intro-orb-two"></div>
+      </section>
+
+      <section class="auth-main">
+        <div class="auth-card">
+          <div class="mobile-brand">
+            <a class="brand" href="/login" aria-label="MemberHub home">
+              <span class="brand-mark">m</span>
+              <span>member<span class="brand-accent">hub</span></span>
+            </a>
+          </div>
+          <span class="eyebrow">GET STARTED</span>
+          <h2>Create your account</h2>
+          <p class="form-subtitle">Just a few details and you’re in.</p>
+
+          <div class="form-alert" role="alert" aria-live="polite" hidden></div>
+          <form id="signup-form" class="auth-form">
+            <div class="name-fields">
+              <div>
+                <label for="firstName">First name</label>
+                <input id="firstName" name="firstName" type="text" autocomplete="given-name" placeholder="Mukhtar" minlength="2" maxlength="50" required>
+              </div>
+              <div>
+                <label for="lastName">Last name</label>
+                <input id="lastName" name="lastName" type="text" autocomplete="family-name" placeholder="Emiabata" minlength="2" maxlength="50" required>
+              </div>
+            </div>
+
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" maxlength="72" required>
+            <p class="field-hint">Use at least 8 characters.</p>
+
+            <button class="button button-primary button-full" type="submit">
+              <span>Create account</span><span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+          </form>
+
+          <p class="auth-switch">Already have an account? <a href="/login">Sign in</a></p>
+          <p class="auth-legal">Your password is securely hashed before it is stored.</p>
+        </div>
+        <footer class="page-footer">© <span data-year></span> MemberHub <span class="footer-divider">·</span> Built for your community</footer>
+      </section>
+    </main>
+  </body>
+</html>

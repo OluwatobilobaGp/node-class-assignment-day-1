@@ -1,4 +1,6 @@
 import express from "express";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
@@ -6,11 +8,13 @@ import morgan from "morgan";
 
 import authRoutes from "./modules/auth/auth.routes.js";
 import profileRoutes from "./modules/profile/profile.routes.js";
+import userRoutes from "./modules/users/user.routes.js";
 
 import { globalLimiter } from "./middleware/rateLimiter.js";
 import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
+const publicDirectory = fileURLToPath(new URL("../public/", import.meta.url));
 
 // Security headers.
 app.use(helmet());
@@ -30,6 +34,7 @@ app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
 app.use(cookieParser());
+app.use(express.static(publicDirectory));
 
 // HTTP request logging.
 if (process.env.NODE_ENV === "development") {
@@ -47,8 +52,25 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+app.get(["/", "/login"], (req, res) => {
+  res.sendFile(path.join(publicDirectory, "login.html"));
+});
+
+app.get("/signup", (req, res) => {
+  res.sendFile(path.join(publicDirectory, "signup.html"));
+});
+
+app.get("/profile", (req, res) => {
+  res.sendFile(path.join(publicDirectory, "profile.html"));
+});
+
+app.get("/users", (req, res) => {
+  res.sendFile(path.join(publicDirectory, "users.html"));
+});
+
 // API routes.
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/users", userRoutes);
 app.use("/api/profile", profileRoutes);
 
 // 404 handler.
