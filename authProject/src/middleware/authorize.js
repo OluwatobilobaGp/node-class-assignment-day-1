@@ -1,4 +1,5 @@
-import ApiError from "../src/utils/ApiError.js";
+
+import ApiError from "../utils/ApiError.js";
 
 const authorize = (...allowedRoles) => {
   return (req, res, next) => {

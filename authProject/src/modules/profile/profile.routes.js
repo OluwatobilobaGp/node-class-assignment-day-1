@@ -1,27 +1,25 @@
+
 import { Router } from "express";
-import User from "../users/user.model.js";
 import Profile from "./profile.model.js";
+import authenticate from "../../middleware/authenticate.js";
+import asyncHandler from "../../utils/asyncHandler.js";
+import ApiError from "../../utils/ApiError.js";
 
 const router = Router();
 
-router.post("/create-profile", async (req, res) => {
-  try {
-    const { userId, phone, address, gender, bio } = req.body;
+// Create a profile for the authenticated user.
+router.post(
+  "/create-profile",
+  authenticate,
+  asyncHandler(async (req, res) => {
+    const { phone, address, gender, bio } = req.body;
 
-    const user = await User.findById(userId);
-
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found"
-      });
-    }
+    const userId = req.user._id;
 
     const existingProfile = await Profile.findOne({ userId });
 
     if (existingProfile) {
-      return res.status(400).json({
-        message: "Profile already exists"
-      });
+      throw new ApiError(409, "Profile already exists");
     }
 
     const profile = await Profile.create({
@@ -33,34 +31,34 @@ router.post("/create-profile", async (req, res) => {
     });
 
     res.status(201).json({
+      success: true,
       message: "Profile created successfully",
-      profile
+      data: {
+        profile
+      }
     });
-  } catch (error) {
-    res.status(500).json({
-      message: error.message
-    });
-  }
-});
+  })
+);
 
-router.get("/:userId", async (req, res) => {
-  try {
+// Get a profile by user ID.
+router.get(
+  "/:userId",
+  asyncHandler(async (req, res) => {
     const profile = await Profile.findOne({
       userId: req.params.userId
     }).populate("userId", "firstName lastName email");
 
     if (!profile) {
-      return res.status(404).json({
-        message: "Profile not found"
-      });
+      throw new ApiError(404, "Profile not found");
     }
 
-    res.status(200).json({ profile });
-  } catch (error) {
-    res.status(500).json({
-      message: error.message
+    res.status(200).json({
+      success: true,
+      data: {
+        profile
+      }
     });
-  }
-});
+  })
+);
 
 export default router;
