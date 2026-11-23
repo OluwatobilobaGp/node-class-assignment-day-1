@@ -237,7 +237,7 @@ export default function AdminDashboard({ users = SAMPLE_USERS }) {
 
             <div className="card-body p-0">
               <div className="table-responsive">
-                <table className="table table-hover align-middle mb-0">
+                <table className="table table-hover table-striped align-middle mb-0">
                   <thead className="table-light small text-uppercase">
                     <tr>
                       <th className="ps-4 text-nowrap">SN</th>
