@@ -9,8 +9,8 @@ import Footer from './components/Footer';
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const Signup = lazy(() => import('./pages/Signup'));
 const ViewUser = lazy(() => import('./pages/ViewUser'));
-const ViewAllUser = lazy(() => import('./pages/ViewAllUser'));
-const AdminBOard = lazy(() => import('./pages/AdminBoard'));
+const Profile = lazy(() => import('./pages/Profile'));
+// const AdminBOard = lazy(() => import('./pages/AdminBoard'));
 
 
 function App() {
@@ -25,11 +25,12 @@ function App() {
 
           <Routes>
             <Route path='/' element={<LoginPage />} />
+            <Route path='/profile' element={<Profile />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/view-all-user' element={<ViewUser />} />
-            <Route path='/view-user' element={<ViewAllUser />} />
-            <Route path='/admin-dashboard' element={<AdminBOard />} />
+            {/* <Route path='/profile' element={<ViewAllUser />} /> */}
+            {/* <Route path='/admin-dashboard' element={<AdminBOard />} /> */}
           </Routes>
           
         </Suspense>

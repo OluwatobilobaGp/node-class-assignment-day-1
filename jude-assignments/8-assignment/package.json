@@ -6,7 +6,6 @@
   "main": "index.js",
   "scripts": {
     "server": "cd server && npm run dev",
-    "client-build": "cd client && npm run build",
     "client": "cd client && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
